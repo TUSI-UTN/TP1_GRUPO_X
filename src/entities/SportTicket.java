@@ -18,19 +18,7 @@ public class SportTicket extends Ticket implements ICategorizable {
 	}
 
 	@Override
-	public Category getCategory() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void setCategory() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public int calculateCost() {
+	public double calculateCost() {
 		// TODO Auto-generated method stub
 		return 0;
 	}
@@ -39,6 +27,18 @@ public class SportTicket extends Ticket implements ICategorizable {
 	public String toString() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public Categories getCategory() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setCategory(String category) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

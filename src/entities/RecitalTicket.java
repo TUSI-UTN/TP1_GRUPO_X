@@ -11,28 +11,34 @@ import java.time.LocalDateTime;
  *
  */
 public class RecitalTicket extends Ticket implements ICategorizable{
-
-	public RecitalTicket(String name, LocalDateTime dateTime, int minutes) {
+	
+	private ICategorizable.Categories category;
+	
+	public RecitalTicket(String name, LocalDateTime dateTime, int minutes, String category) {
 		super(name, dateTime, minutes);
-		// TODO Auto-generated constructor stub
+		this.setCategory(category);
 	}
 
 	@Override
-	public Category getCategory() {
-		// TODO Auto-generated method stub
-		return null;
+	public Categories getCategory() {
+		return this.category;
 	}
 
 	@Override
-	public void setCategory() {
-		// TODO Auto-generated method stub
-		
+	public void setCategory(String category) {
+		try {
+			this.category = ICategorizable.Categories.valueOf(category);
+		} catch(IllegalArgumentException  ex) {
+			throw new IllegalArgumentException("Categoria " + category + " no disponible.");
+		}
 	}
-
+	
 	@Override
-	public int calculateCost() {
-		// TODO Auto-generated method stub
-		return 0;
+	public double calculateCost() {
+		if(this.category == ICategorizable.Categories.VIP) {
+			return 1500;
+		}
+		return 800;
 	}
 
 	@Override
@@ -40,5 +46,6 @@ public class RecitalTicket extends Ticket implements ICategorizable{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 
 }
