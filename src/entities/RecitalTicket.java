@@ -17,6 +17,7 @@ public class RecitalTicket extends Ticket implements ICategorizable{
 	public RecitalTicket(String name, LocalDateTime dateTime, int minutes, String category) {
 		super(name, dateTime, minutes);
 		this.setCategory(category);
+		this.calculateCost();
 	}
 
 	@Override
@@ -34,11 +35,12 @@ public class RecitalTicket extends Ticket implements ICategorizable{
 	}
 	
 	@Override
-	public double calculateCost() {
-		if(this.category == ICategorizable.Categories.VIP) {
-			return 1500;
+	protected void calculateCost() {
+		if(ICategorizable.Categories.VIP == this.category) {
+			this.cost = 1500;
+			return;
 		}
-		return 800;
+		this.cost = 800;
 	}
 
 	@Override
@@ -46,6 +48,5 @@ public class RecitalTicket extends Ticket implements ICategorizable{
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 
 }

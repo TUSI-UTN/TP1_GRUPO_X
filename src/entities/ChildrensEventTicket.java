@@ -17,9 +17,9 @@ public class ChildrensEventTicket extends Ticket implements ICategorizable{
 	}
 
 	@Override
-	public double calculateCost() {
+	protected void calculateCost() {
 		// TODO Auto-generated method stub
-		return 0;
+		return;
 	}
 
 	@Override

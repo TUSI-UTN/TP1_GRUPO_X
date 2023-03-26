@@ -10,11 +10,12 @@ import java.time.LocalDateTime;
  *
  */
 public abstract class Ticket {
-	public static int counter; 
-	public int id;
-	public String name;
-	public LocalDateTime dateTime;
-	public int minutes;
+	private static int counter; 
+	protected int id;
+	protected String name;
+	protected LocalDateTime dateTime;
+	protected int minutes = 90; // Duracion por defecto 
+	protected double cost;
 	
 	/** 
 	 * Metodo abstracto para calcular el costo de la entrada.
@@ -22,17 +23,30 @@ public abstract class Ticket {
 	 * 
 	 * @author tscutti
 	 */
-	public abstract double calculateCost();
+	protected abstract void calculateCost();
 	public abstract String toString();
 	
 	public Ticket(String name, LocalDateTime dateTime, int minutes)
 	{
-		this.id = ++Ticket.counter; // First we increment 
+		this.id = ++Ticket.counter; // Primero incrementamos
 		this.name = name;
 		this.dateTime = dateTime;
 		this.minutes = minutes;
 	}
 	
+	/**
+	 * Sobrecarga de constructor en caso de que no se sepa la duracion.
+	 * La duracion por defecto sera de 90
+	 * @param name
+	 * @param dateTime
+	 */
+	public Ticket(String name, LocalDateTime dateTime)
+	{
+		this.id = ++Ticket.counter; // First we increment 
+		this.name = name;
+		this.dateTime = dateTime;
+	}
+
 	public String getName()
 	{
 		return this.name;
@@ -51,5 +65,10 @@ public abstract class Ticket {
 	public int getId()
 	{
 		return this.id;
+	}
+	
+	public double getCost()
+	{
+		return this.cost;
 	}
 }

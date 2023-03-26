@@ -1,7 +1,7 @@
 package entities;
 
-/**
- * Interfaz creada para implementar en las clases que necesiten ser categorizadas
+/** TEMPORAL QUEDA DEFINIR SI ES CORRECTO CREAR ESTA INTERFAZ.
+ * Interfaz creada para implementar en las clases que necesiten ser categorizadas 
  * 
  * @example
  * Las entradas de los recitales tienen un costo de fijo 1500$ para entradas vip y 800$ para entradas generales.

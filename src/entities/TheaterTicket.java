@@ -19,8 +19,8 @@ public class TheaterTicket extends Ticket {
 	}
 
 	@Override
-	public double calculateCost() {
-		return 1350.50;
+	protected void calculateCost() {
+		this.cost = 1350.50;
 	}
 
 	@Override
