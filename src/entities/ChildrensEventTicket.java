@@ -11,21 +11,23 @@ import java.time.LocalDateTime;
  */
 public class ChildrensEventTicket extends Ticket implements ICategorizable{
 	
-	 private int age;
 	 private boolean souvenir;
+	 private ICategorizable.Categories category;
 
-	public ChildrensEventTicket(String name, LocalDateTime dateTime, int minutes, int age, boolean souvenir) {
+	public ChildrensEventTicket(String name, LocalDateTime dateTime, String category, int minutes, boolean souvenir) {
 		super(name, dateTime, minutes);
+		this.setCategory(category);
 		// TODO Auto-generated constructor stub
-		this.age = age;
 	}
 
 	@Override
 	protected void calculateCost() {
-		if(this.age < 8) {
-			this.cost =  250;
+		if(ICategorizable.Categories.MAYORES == this.category) {
+			this.cost =  500;
+		} else if (ICategorizable.Categories.MENORES == this.category){
+			this.cost = 250;
 		} else {
-			this.cost = 500;
+			System.out.println("Categoria Inexistente");
 		}
 	}
 
@@ -38,15 +40,16 @@ public class ChildrensEventTicket extends Ticket implements ICategorizable{
 
 	@Override
 	public Categories getCategory() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.category;
 	}
-	
 
 	@Override
 	public void setCategory(String category) {
-		// TODO Auto-generated method stub
-		
+		try {
+			this.category = ICategorizable.Categories.valueOf(category);
+		} catch(IllegalArgumentException  ex) {
+			throw new IllegalArgumentException("Categoria " + category + " no disponible.");
+		}
 	}
 	
 	public boolean hasSouvenir() {
@@ -55,10 +58,6 @@ public class ChildrensEventTicket extends Ticket implements ICategorizable{
 	
 	public void setSouvenir(boolean souvenir) {
         this.souvenir = souvenir;
-    }
-	
-	public int getAge() {
-        return age;
     }
 
 }
