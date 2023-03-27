@@ -13,6 +13,7 @@ import java.time.LocalDateTime;
 public class RecitalTicket extends Ticket implements ICategorizable{
 	
 	private ICategorizable.Categories category;
+	private Genre genre;
 	
 	public RecitalTicket(String name, LocalDateTime dateTime, int minutes, String category) {
 		super(name, dateTime, minutes);
