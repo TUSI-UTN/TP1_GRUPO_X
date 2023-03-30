@@ -1,16 +1,16 @@
 package entities;
 
-import java.io.Console;
+import java.sql.Date;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.Month;
 
 public class Main {
 
 	public static void main(String[] args) {
-		Genre Drama = new Genre ("Drama");
 		
-	    LocalDateTime dateTime = LocalDateTime.of(2022, Month.MAY, 1, 19, 30);
-		TheaterTicket ticket = new TheaterTicket("obra1", dateTime, 120, Drama, 3);
-		System.out.println(ticket.toString());
-		}
+		SportTicket ticketDeporte = new SportTicket("campeonato barrial",LocalDateTime.now(),120,"FUTBOL","NACIONAL");
+		SportTicket ticketDeporteB = new SportTicket("amistoso",LocalDateTime.now(),60,"RUGBY","INTERNACIONAL");
+		
+	}
+
 }
