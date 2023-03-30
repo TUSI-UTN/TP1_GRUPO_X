@@ -3,8 +3,8 @@ package entities;
 import java.time.LocalDateTime;
 
 /**
- * Todas las entradas poseen un número único de entrada, nombre del show, día y horario del evento, tiempo aproximado de duración y costo. 
- * El costo se calcula de manera diferente según el tipo de entrada.
+ * Todas las entradas poseen un nï¿½mero ï¿½nico de entrada, nombre del show, dï¿½a y horario del evento, tiempo aproximado de duraciï¿½n y costo. 
+ * El costo se calcula de manera diferente segï¿½n el tipo de entrada.
  * 
  * @author tscutti
  *
@@ -24,7 +24,6 @@ public abstract class Ticket {
 	 * @author tscutti
 	 */
 	protected abstract void calculateCost();
-	public abstract String toString();
 	
 	public Ticket(String name, LocalDateTime dateTime, int minutes)
 	{
@@ -70,5 +69,9 @@ public abstract class Ticket {
 	public double getCost()
 	{
 		return this.cost;
+	}
+	
+	public String toString() {
+	    return "Nï¿½mero de entrada: " + getId() + "\nNombre del show: " + getName() + "\nFecha y hora del evento: " + getDateTime() + "\nDuraciï¿½n aproximada: " + getMinutes() + " minutos\n"; 
 	}
 }

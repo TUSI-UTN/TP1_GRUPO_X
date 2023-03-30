@@ -4,8 +4,8 @@ import java.time.LocalDateTime;
 
 /**
  * Las entradas de los recitales tienen un costo de fijo 1500$ para entradas vip y 800$ para entradas generales. 
- * A su vez, cada entrada pertenece a una banda, tiene un género en particular y puede tener una o dos bandas de soporte. 
- * Los géneros posibles para los recitales son los siguientes: rock, heavy metal, reggaetón, trap, latinos y pop.
+ * A su vez, cada entrada pertenece a una banda, tiene un gï¿½nero en particular y puede tener una o dos bandas de soporte. 
+ * Los gï¿½neros posibles para los recitales son los siguientes: rock, heavy metal, reggaetï¿½n, trap, latinos y pop.
  * 
  * @author tscutti
  *
@@ -13,11 +13,13 @@ import java.time.LocalDateTime;
 public class RecitalTicket extends Ticket implements ICategorizable{
 	
 	private ICategorizable.Categories category;
+	private Genre genre;
 	
-	public RecitalTicket(String name, LocalDateTime dateTime, int minutes, String category) {
+	public RecitalTicket(String name, LocalDateTime dateTime, int minutes, String category, Genre genre) {
 		super(name, dateTime, minutes);
 		this.setCategory(category);
 		this.calculateCost();
+		this.genre = genre;
 	}
 
 	@Override
