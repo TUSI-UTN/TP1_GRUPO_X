@@ -8,12 +8,9 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		//PRUEBA de creacion de ticket A deporte NACIONAL y ticket B deporte INTERNACIONAL 
-		SportTicket ticketDeporte = new SportTicket("amistoso",LocalDateTime.now(),60,"FUTBOL","NACIONAL");
+		SportTicket ticketDeporte = new SportTicket("campeonato barrial",LocalDateTime.now(),120,"FUTBOL","NACIONAL");
 		SportTicket ticketDeporteB = new SportTicket("amistoso",LocalDateTime.now(),60,"RUGBY","INTERNACIONAL");
 		
-		//PRUEBA de creacion de ticket A con valores no contemplados
-		//SportTicket ticketDeporteC = new SportTicket("amistoso",LocalDateTime.now(),60,"FOOTBALL","NAC");
 	}
 
 }
