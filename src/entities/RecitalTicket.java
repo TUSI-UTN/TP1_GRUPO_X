@@ -13,12 +13,16 @@ import java.time.LocalDateTime;
 public class RecitalTicket extends Ticket implements ICategorizable{
 	
 	private ICategorizable.Categories category;
+	private Band mainBand;
+	private Band[] supportBands;
 	private Genre genre;
 	
-	public RecitalTicket(String name, LocalDateTime dateTime, int minutes, String category, Genre genre) {
+	public RecitalTicket(String name, LocalDateTime dateTime, int minutes, String category, Genre genre, Band mainBand, Band[] supportBands) {
 		super(name, dateTime, minutes);
 		this.setCategory(category);
+		this.setSupportBands(supportBands);
 		this.calculateCost();
+		this.mainBand = mainBand;
 		this.genre = genre;
 	}
 
@@ -45,10 +49,33 @@ public class RecitalTicket extends Ticket implements ICategorizable{
 		this.cost = 800;
 	}
 
+	public void setSupportBands(Band[] bands) {
+		if(bands.length > 2) {
+			System.out.println("Un recital no puede tener mas de dos bandas soportes.");
+			return;
+		}
+		
+		this.supportBands = bands;
+	}
+
+	public Genre getGenre() {
+		return this.genre;
+	}
+	
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
-		return null;
+		String recitalTicket = "Entrada de recital \n" + super.toString();
+		recitalTicket += "Costo: " + this.cost + "\n";
+		recitalTicket += "Categoria: " + this.getCategory() +  "\n";
+		recitalTicket += "Banda principal: " + this.mainBand.getName() + "\n";
+		recitalTicket += "Bandas soporte: \n";			
+		
+		for(Band band : this.supportBands)
+		{
+			recitalTicket += band.getName() + "\n";
+		}
+		
+		return recitalTicket;
 	}
 
 }

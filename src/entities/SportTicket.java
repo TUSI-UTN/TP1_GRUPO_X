@@ -54,7 +54,6 @@ public class SportTicket extends Ticket implements ICategorizable {
 	public String toString() {
 		String sportsTicketInfo = "Entrada Evento deportivo \n" + super.toString();
 		sportsTicketInfo += "Costo: " + this.cost;
-		System.out.println(sportsTicketInfo);
 		return sportsTicketInfo;
 	}
 
