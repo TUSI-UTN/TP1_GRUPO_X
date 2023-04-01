@@ -11,26 +11,36 @@ import java.time.LocalDateTime;
  */
 public class ChildrensEventTicket extends Ticket implements ICategorizable{
 	
-	 private boolean souvenir;
+	 private boolean souvenir = false;
 	 private ICategorizable.Categories category;
 	//Costos Fijos por tipo Entrada
-	private static final double menores = 250;
-	private static final double mayores = 500;
+	private static final double underage = 250;
+	private static final double adult = 500;
 
 	public ChildrensEventTicket(String name, LocalDateTime dateTime, String category, int minutes, boolean souvenir) {
 		super(name, dateTime, minutes);
+		this.setCategory(category);
+		this.setSouvenir(souvenir);
+	}
+
+ 	public ChildrensEventTicket(String name, LocalDateTime dateTime, String category, int minutes) {
+		super(name, dateTime, minutes);
+		this.setCategory(category);
+	}
+
+  	public ChildrensEventTicket(String name, LocalDateTime dateTime, String category) {
+		super(name, dateTime);
 		this.setCategory(category);
 	}
 
 	@Override
 	protected void calculateCost() {
-		if(ICategorizable.Categories.MAYORES == this.category) {
-			this.cost =  mayores;
-		} else if (ICategorizable.Categories.MENORES == this.category){
-			this.cost = menores;
-		} else {
-			System.out.println("Categoria Inexistente");
+		if (ICategorizable.Categories.MENORES == this.category){
+			this.cost = underage;
+			return;
 		}
+		 
+		this.cost =  adult;
 	}
 
 	@Override
