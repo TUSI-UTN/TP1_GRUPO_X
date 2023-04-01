@@ -16,6 +16,9 @@ public class RecitalTicket extends Ticket implements ICategorizable{
 	private Band mainBand;
 	private Band[] supportBands;
 	private Genre genre;
+	//Costos Fijos por tipo Entrada
+	private static final double vip = 1500;
+	private static final double general = 800;
 	
 	public RecitalTicket(String name, LocalDateTime dateTime, int minutes, String category, Genre genre, Band mainBand, Band[] supportBands) {
 		super(name, dateTime, minutes);
@@ -43,10 +46,10 @@ public class RecitalTicket extends Ticket implements ICategorizable{
 	@Override
 	protected void calculateCost() {
 		if(ICategorizable.Categories.VIP == this.category) {
-			this.cost = 1500;
+			this.cost = vip;
 			return;
 		}
-		this.cost = 800;
+		this.cost = general;
 	}
 
 	public void setSupportBands(Band[] bands) {

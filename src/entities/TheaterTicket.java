@@ -12,6 +12,8 @@ public class TheaterTicket extends Ticket {
 	private Genre genre;
 	private int actoresPrincipales;
 	private Actor[] actores;
+	//Costos Fijos por tipo Entrada
+	private static final double costoFijo = 1350.50;
 
 	public TheaterTicket(String name, LocalDateTime dateTime, int minutes, Genre genre, int actoresPpales, Actor[] actores) {
 		super(name, dateTime, minutes);
@@ -47,7 +49,7 @@ public class TheaterTicket extends Ticket {
 
 	@Override
 	protected void calculateCost() {
-		this.cost = 1350.50;	
+		this.cost = costoFijo;	
 	}
 
 	public Actor[] getActores() {
