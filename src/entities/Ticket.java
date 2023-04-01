@@ -1,6 +1,7 @@
 package entities;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 /**
  * Todas las entradas poseen un n�mero �nico de entrada, nombre del show, d�a y horario del evento, tiempo aproximado de duraci�n y costo. 
@@ -72,6 +73,7 @@ public abstract class Ticket {
 	}
 	
 	public String toString() {
-	    return "Numero de entrada: " + getId() + "\nNombre del show: " + getName() + "\nFecha y hora del evento: " + getDateTime() + "\nDuracion aproximada: " + getMinutes() + " minutos\n"; 
+		String formattedString = getDateTime().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+	    return "Numero de entrada: " + getId() + "\nNombre del show: " + getName() + "\nFecha y hora del evento: " + formattedString + "\nDuracion aproximada: " + getMinutes() + " minutos\n"; 
 	}
 }

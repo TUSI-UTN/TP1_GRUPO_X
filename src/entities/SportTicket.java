@@ -75,7 +75,7 @@ public class SportTicket extends Ticket implements ICategorizable {
 		String sportsTicketInfo = "Entrada Evento deportivo \n" + super.toString();
 		sportsTicketInfo += "Categoria: " + this.getCategory() + "\n";
 		sportsTicketInfo += "Deporte: " + this.getSportsType() + "\n";
-		sportsTicketInfo += "Costo: " + this.cost;
+		sportsTicketInfo += "Costo: " + this.cost + "\n";
 		return sportsTicketInfo;
 	}
 
