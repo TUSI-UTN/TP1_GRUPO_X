@@ -13,6 +13,9 @@ public class ChildrensEventTicket extends Ticket implements ICategorizable{
 	
 	 private boolean souvenir;
 	 private ICategorizable.Categories category;
+	//Costos Fijos por tipo Entrada
+	private static final double menores = 250;
+	private static final double mayores = 500;
 
 	public ChildrensEventTicket(String name, LocalDateTime dateTime, String category, int minutes, boolean souvenir) {
 		super(name, dateTime, minutes);
@@ -22,9 +25,9 @@ public class ChildrensEventTicket extends Ticket implements ICategorizable{
 	@Override
 	protected void calculateCost() {
 		if(ICategorizable.Categories.MAYORES == this.category) {
-			this.cost =  500;
+			this.cost =  mayores;
 		} else if (ICategorizable.Categories.MENORES == this.category){
-			this.cost = 250;
+			this.cost = menores;
 		} else {
 			System.out.println("Categoria Inexistente");
 		}
