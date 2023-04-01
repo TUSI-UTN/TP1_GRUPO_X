@@ -72,6 +72,6 @@ public abstract class Ticket {
 	}
 	
 	public String toString() {
-	    return "Número de entrada: " + getId() + "\nNombre del show: " + getName() + "\nFecha y hora del evento: " + getDateTime() + "\nDuración aproximada: " + getMinutes() + " minutos\n"; 
+	    return "Nï¿½mero de entrada: " + getId() + "\nNombre del show: " + getName() + "\nFecha y hora del evento: " + getDateTime() + "\nDuraciï¿½n aproximada: " + getMinutes() + " minutos\n"; 
 	}
 }

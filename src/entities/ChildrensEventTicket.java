@@ -17,7 +17,6 @@ public class ChildrensEventTicket extends Ticket implements ICategorizable{
 	public ChildrensEventTicket(String name, LocalDateTime dateTime, String category, int minutes, boolean souvenir) {
 		super(name, dateTime, minutes);
 		this.setCategory(category);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
