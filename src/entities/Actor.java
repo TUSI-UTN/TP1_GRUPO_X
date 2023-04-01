@@ -5,11 +5,11 @@ public class Actor {
 	private int age;
 	private String gender;
 	
-	  public Actor(String name, int age, String gender) {
-		    this.setName(name);
-		    this.setAge(age);
-		    this.setGender(gender);
-		  }
+	public Actor(String name, int age, String gender) {
+		this.setName(name);
+		this.setAge(age);
+		this.setGender(gender);
+ 	}
 
 	public String getName() {
 		return name;
@@ -36,7 +36,7 @@ public class Actor {
 	}
 	  
 	public String toString() {
-	    return "Nombre: " + name + "\nEdad: " + age + "\nGénero: " + gender + "\n";
+	    return "Nombre: " + name + "\nEdad: " + age + "\nGenero: " + gender + "\n";
 	}
 	
 }

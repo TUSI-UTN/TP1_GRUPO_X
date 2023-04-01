@@ -26,6 +26,15 @@ public class RecitalTicket extends Ticket implements ICategorizable{
 		this.genre = genre;
 	}
 
+	public RecitalTicket(String name, LocalDateTime dateTime, String category, Genre genre, Band mainBand, Band[] supportBands) {
+		super(name, dateTime);
+		this.setCategory(category);
+		this.setSupportBands(supportBands);
+		this.calculateCost();
+		this.mainBand = mainBand;
+		this.genre = genre;
+	} 
+ 
 	@Override
 	public Categories getCategory() {
 		return this.category;
@@ -49,12 +58,11 @@ public class RecitalTicket extends Ticket implements ICategorizable{
 		this.cost = 800;
 	}
 
-	public void setSupportBands(Band[] bands) {
+	public void setSupportBands(Band[] bands) throws IllegalArgumentException {
 		if(bands.length > 2) {
-			System.out.println("Un recital no puede tener mas de dos bandas soportes.");
-			return;
+			throw new IllegalArgumentException("Un recital no puede tener mas de dos bandas soportes.");
 		}
-		
+
 		this.supportBands = bands;
 	}
 

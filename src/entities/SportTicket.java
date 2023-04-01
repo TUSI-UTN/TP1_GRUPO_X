@@ -14,6 +14,12 @@ public class SportTicket extends Ticket implements ICategorizable {
 
 	private ICategorizable.Categories category;
 	public SportsTypes sportstype;
+	
+	//Costos Fijos por tipo Entrada
+	private static final double rugby = 450;
+	private static final double futbol = 300;
+	private static final double hockey = 380;
+	private static final double international = 1.3;//Recargo del 30% para deporte internacional.
 
 	public enum SportsTypes {
 		RUGBY,
@@ -29,30 +35,46 @@ public class SportTicket extends Ticket implements ICategorizable {
 		this.toString();
 	}
 
+	public SportTicket(String name, LocalDateTime dateTime, String sportstype, String category) {
+		super(name, dateTime);
+		this.setSportsType(sportstype);
+		this.setCategory(category);
+		this.calculateCost();
+		this.toString();
+	}
 
 	@Override
 	protected void calculateCost() {
-		if(SportsTypes.RUGBY == this.getSportsType()) {
-			this.cost =  450;
-		} else if (SportsTypes.FUTBOL == this.getSportsType()){
-			this.cost = 300;
-		} else if (SportsTypes.HOCKEY == this.getSportsType()) {
-			this.cost = 380;
+		switch(this.getSportsType()) {
+			case RUGBY:
+				this.cost = rugby;
+				break;
+			case FUTBOL:
+				this.cost = futbol;
+				break;
+			case HOCKEY:
+				this.cost = hockey;
+				break;
+			default:
+				System.out.println("Tipo de deporte Inexistente");
 		}
-		else {
-			System.out.println("Tipo de deporte Inexistente");
-		}
-		if(ICategorizable.Categories.INTERNACIONAL == this.getCategory()) {
-			System.out.println("International ticket without tax  :" + this.getCost());
-			System.out.println("International tax  :" + this.getCost()*0.3);
-			this.cost = this.cost*1.3;
+		if(isInternational()) {
+			//System.out.println("International ticket without tax  :" + this.getCost());
+			//System.out.println("International tax  :" + this.getCost() * internacional);
+			this.cost = this.cost * international;
 		}
 		return;
+	}
+
+	private boolean isInternational() {
+		return ICategorizable.Categories.INTERNACIONAL == this.getCategory();
 	}
 
 	@Override
 	public String toString() {
 		String sportsTicketInfo = "Entrada Evento deportivo \n" + super.toString();
+		sportsTicketInfo += "Categoria: " + this.getCategory() + "\n";
+		sportsTicketInfo += "Deporte: " + this.getSportsType() + "\n";
 		sportsTicketInfo += "Costo: " + this.cost;
 		return sportsTicketInfo;
 	}
@@ -60,7 +82,6 @@ public class SportTicket extends Ticket implements ICategorizable {
 	
 	@Override
 	public Categories getCategory() {
-		// TODO Auto-generated method stub
 		return this.category;
 	}
 
@@ -76,7 +97,7 @@ public class SportTicket extends Ticket implements ICategorizable {
 		try {
 			this.sportstype = SportsTypes.valueOf(sportstype);
 		} catch(IllegalArgumentException  ex) {
-			throw new IllegalArgumentException("Categoria " + category + " no disponible.");
+			throw new IllegalArgumentException("Deporte " + category + " no disponible.");
 		}	
 	}
 	
