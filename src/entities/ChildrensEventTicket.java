@@ -21,16 +21,19 @@ public class ChildrensEventTicket extends Ticket implements ICategorizable{
 		super(name, dateTime, minutes);
 		this.setCategory(category);
 		this.setSouvenir(souvenir);
+		this.calculateCost();
 	}
 
  	public ChildrensEventTicket(String name, LocalDateTime dateTime, String category, int minutes) {
 		super(name, dateTime, minutes);
 		this.setCategory(category);
+		this.calculateCost();
 	}
 
   	public ChildrensEventTicket(String name, LocalDateTime dateTime, String category) {
 		super(name, dateTime);
 		this.setCategory(category);
+		this.calculateCost();
 	}
 
 	@Override
@@ -46,7 +49,7 @@ public class ChildrensEventTicket extends Ticket implements ICategorizable{
 	@Override
 	public String toString() {
 		String childrenTicketInfo = "Entrada Infantil \n" + super.toString();
-		childrenTicketInfo += "Costo: " + this.cost + (hasSouvenir() ? "Incluye souvenir\n" : "No incluye souvenir\n");
+		childrenTicketInfo += "Costo: " + this.cost + (hasSouvenir() ? "\nIncluye souvenir\n" : "\nNo incluye souvenir\n");
 		return childrenTicketInfo;
 	}
 

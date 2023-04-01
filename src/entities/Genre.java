@@ -1,7 +1,5 @@
 package entities;
 
-import java.time.LocalDateTime;
-
 /* Clase genero
  * Los generos posibles para los recitales son los siguientes: rock, heavy metal, reggaeton, trap, latinos y pop.
  * Los generos de los teatros son los siguientes: drama, teatro o comedia.
